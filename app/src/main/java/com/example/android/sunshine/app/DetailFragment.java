@@ -17,6 +17,7 @@ package com.example.android.sunshine.app;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
@@ -110,6 +111,14 @@ public class DetailFragment extends Fragment implements LoaderManager.LoaderCall
         return rootView;
     }
 
+    public static DetailFragment newInstance(Uri aUri) {
+        DetailFragment f = new DetailFragment();
+        Bundle args = new Bundle();
+        args.putString("DETAIL_URI", aUri.toString());
+        f.setArguments(args);
+        return f;
+    }
+
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -145,7 +154,7 @@ public class DetailFragment extends Fragment implements LoaderManager.LoaderCall
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         Log.v(LOG_TAG, "In onCreateLoader");
         Intent intent = getActivity().getIntent();
-        if (intent == null) {
+        if ((intent == null) || intent.getData() == null ) {
             return null;
         }
 
