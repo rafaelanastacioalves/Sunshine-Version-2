@@ -39,18 +39,40 @@ public class MyView extends View {
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public MyView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
+        init();
+
     }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        int hSpecMode = MeasureSpec.getMode(heightMeasureSpec);
+        int hSpecSize = MeasureSpec.getSize(heightMeasureSpec);
+        int myHeight = hSpecSize;
 
+        int wSpecMode = MeasureSpec.getMode(widthMeasureSpec);
+        int wSpecSize = MeasureSpec.getSize(widthMeasureSpec);
+        int myWidth = wSpecSize;
+
+        if (hSpecMode == MeasureSpec.EXACTLY) {
+            myHeight = hSpecSize;
+        } else if (hSpecMode == MeasureSpec.AT_MOST) {
+            //
+        }
+
+        if (hSpecMode == MeasureSpec.EXACTLY) {
+            myWidth = wSpecSize;
+        } else if (wSpecMode == MeasureSpec.AT_MOST) {
+            //
+        }
+
+        setMeasuredDimension(myWidth,myHeight);
     }
+
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        canvas.drawText("R",0,0,mTextPaint);
+        canvas.drawCircle(60,60,60,mTextPaint);
     }
 }
