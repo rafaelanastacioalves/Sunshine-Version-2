@@ -13,7 +13,8 @@
         android:layout_width="60dp"
         android:layout_height="wrap_content">
 
-        <ImageView
+        <com.example.android.sunshine.app.view.MyView
+            android:contentDescription="@string/forecast_preview_image"
             android:id="@+id/list_item_icon"
             android:layout_gravity="center"
             android:layout_width="wrap_content"

@@ -49,10 +49,11 @@
         android:orientation="vertical"
         android:gravity="center_horizontal|bottom">
 
-        <ImageView
+        <com.example.android.sunshine.app.view.MyView
+            android:contentDescription="@string/forecast_preview_image"
             android:id="@+id/list_item_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
             android:layout_gravity="center_horizontal"/>
 
         <TextView
